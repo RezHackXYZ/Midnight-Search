@@ -17,10 +17,15 @@
 </div>
 
 <style>
-	#root {
-		height: 100%;
-		width: 100%;
+	:root {
 		background-color: black;
 		color: white;
+	}
+
+	#root {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		margin: 0;
 	}
 </style>
