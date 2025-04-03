@@ -6,7 +6,7 @@
 			id="logo"
 		/>
 		<!-- svelte-ignore a11y_autofocus -->
-		<input autofocus id="input"  />
+		<input autofocus autocomplete="off" id="input" />
 	</div>
 </div>
 
