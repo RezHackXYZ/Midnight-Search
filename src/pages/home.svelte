@@ -28,6 +28,7 @@
 	#logo {
 		width: 55px;
 		margin-right: 10px;
+		margin-left: 5px;
 	}
 	#input {
 		background-color: black;
