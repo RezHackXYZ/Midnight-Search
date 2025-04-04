@@ -21,8 +21,5 @@ export async function websitelogic(query) {
 		window.location.href = firstResultUrl;
 	} else {
 		alert("No search results found");
-		window.location.href = `https://www.google.com/search?q=${encodeURIComponent(
-			query
-		)}`;
 	}
 }

@@ -1,13 +1,21 @@
-import {websitelogic} from "./website-logic.js";
+import { websitelogic } from "./website-logic.js";
 
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: localStorage.getItem("geminiApiKey") });
 
+let globalQuery;
+
+export function whatsthequery() {
+	return globalQuery;
+}
+
 function querysearch(query) {}
-function queryllm(query) {}
+function queryllm(query) {window.location.href = "#/llm";}
 
 export async function search(query) {
+	globalQuery = query;
+
 	const response = await ai.models.generateContent({
 		model: "gemini-2.0-flash-lite",
 		contents: `
