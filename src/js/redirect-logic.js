@@ -1,10 +1,11 @@
+import {websitelogic} from "./website-logic.js";
+
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: localStorage.getItem("geminiApiKey") });
 
 function querysearch(query) {}
 function queryllm(query) {}
-function querywebsite(query) {}
 
 export async function search(query) {
 	const response = await ai.models.generateContent({
@@ -45,5 +46,6 @@ The users question is: "${query}".
 	} else if (typeOfQuery == "llm") {
 		queryllm(query);
 	} else if (typeOfQuery == "website") {
+		websitelogic(JSON.parse(response.text.slice(7, -4)).FuzzedText);
 	}
 }

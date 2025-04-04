@@ -1,5 +1,5 @@
 <script>
-	import { search } from "./logic.js";
+	import { search } from "../js/redirect-logic.js";
 
 	let googleSearchKey = localStorage.getItem("googleSearchKey") || "";
 	let geminiApiKey = localStorage.getItem("geminiApiKey") || "";
