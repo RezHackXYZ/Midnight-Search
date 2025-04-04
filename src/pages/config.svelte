@@ -3,8 +3,7 @@
 
 	let googleSearchKey = "";
 	let geminiApiKey = "";
-
-	// Load saved keys from localStorage on component mount
+	
 	onMount(() => {
 		googleSearchKey = localStorage.getItem("googleSearchKey") || "";
 		geminiApiKey = localStorage.getItem("geminiApiKey") || "";
@@ -13,7 +12,6 @@
 	function saveKeys() {
 		localStorage.setItem("googleSearchKey", googleSearchKey);
 		localStorage.setItem("geminiApiKey", geminiApiKey);
-		alert("API keys saved successfully!");
 	}
 </script>
 
