@@ -1,10 +1,6 @@
 <script>
 	import { whatsthequery } from "../js/redirect-logic.js";
-	import { onMount } from 'svelte';
-
-
-	let geminiApiKey = localStorage.getItem("geminiApiKey") || "";
-	let input = whatsthequery();
+	import { onMount } from "svelte";
 
 	onMount(() => {
 		const handleKeydown = (event) => {
@@ -12,19 +8,32 @@
 				window.location.href = "#/";
 			}
 		};
-		window.addEventListener('keydown', handleKeydown);
-		return () => window.removeEventListener('keydown', handleKeydown);
+		window.addEventListener("keydown", handleKeydown);
+		return () => window.removeEventListener("keydown", handleKeydown);
 	});
+
+	let geminiApiKey = localStorage.getItem("geminiApiKey") || "";
+	let input = whatsthequery();
+
+	import { GoogleGenAI } from "@google/genai";
+
+	const ai = new GoogleGenAI({
+		apiKey: localStorage.getItem("geminiApiKey"),
+	});
+	export async function search(query) {
+		const response = await ai.models.generateContent({
+			model: "gemini-2.0-flash-lite",
+			contents: `
+The users question is: "${query}".
+
+`,
+		});
+	}
 </script>
 
 <div id="root">
 	<div id="msgs"></div>
-	<input
-		autofocus
-		autocomplete="off"
-		id="input"
-		bind:value={input}
-	/>
+	<input autofocus autocomplete="off" id="input" bind:value={input} />
 </div>
 
 <style>

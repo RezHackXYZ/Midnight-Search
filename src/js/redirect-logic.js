@@ -1,9 +1,5 @@
 import { websitelogic } from "./website-logic.js";
 
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: localStorage.getItem("geminiApiKey") });
-
 let globalQuery;
 
 export function whatsthequery() {
@@ -11,13 +7,17 @@ export function whatsthequery() {
 }
 
 function querysearch(query) {}
-function queryllm(query) {window.location.href = "#/llm";}
+function queryllm(query) {
+	window.location.href = "#/llm";
+}
+import { GoogleGenAI } from "@google/genai";
 
+const ai = new GoogleGenAI({ apiKey: localStorage.getItem("geminiApiKey") });
 export async function search(query) {
 	globalQuery = query;
 
 	const response = await ai.models.generateContent({
-		model: "gemini-2.0-flash-lite",
+		model: "gemma-3-4b-it",
 		contents: `
 
 You are a search agent. Your task is to classify the user's question into one of three types:
